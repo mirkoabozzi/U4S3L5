@@ -37,5 +37,9 @@ public class Application {
 //        cd.save(magazine3);
 //        cd.save(magazine4);
 
+
+        System.out.println(cd.getByASIN("87ee5874-05c7-4bcb-9f1f-a41d4fd7778a"));
+
+
     }
 }

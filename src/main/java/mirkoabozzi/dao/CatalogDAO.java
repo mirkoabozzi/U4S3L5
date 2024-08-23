@@ -3,6 +3,9 @@ package mirkoabozzi.dao;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
 import mirkoabozzi.entities.Catalog;
+import mirkoabozzi.exceptions.NotFoundException;
+
+import java.util.UUID;
 
 public class CatalogDAO {
     private final EntityManager em;
@@ -17,6 +20,13 @@ public class CatalogDAO {
         em.persist(catalog);
         transaction.commit();
         System.out.println("Elemento " + catalog.getTitle() + " salvato");
+    }
+
+    public Catalog getByASIN(String catalogISBN) {
+        Catalog elementFound = em.find(Catalog.class, UUID.fromString(catalogISBN));
+        if (elementFound == null)
+            throw new NotFoundException(catalogISBN);
+        else return elementFound;
     }
 
 }
