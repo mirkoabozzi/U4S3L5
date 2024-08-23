@@ -14,6 +14,9 @@ public class Book extends Catalog {
     @Column(name = "genere")
     private String genere;
 
+    public Book() {
+    }
+
     public Book(String title, LocalDate publicationDate, int pageNumber, String author, String genere) {
         super(title, publicationDate, pageNumber);
         this.author = author;

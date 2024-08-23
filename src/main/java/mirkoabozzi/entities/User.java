@@ -3,6 +3,7 @@ package mirkoabozzi.entities;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -19,6 +20,12 @@ public class User {
     private LocalDate birthDate;
     @Column(name = "card_id")
     private int cardId;
+
+    @OneToMany(mappedBy = "user")
+    private List<Loan> loanList;
+
+    public User() {
+    }
 
     public User(String name, String username, LocalDate birthDate, int cardId) {
         this.name = name;

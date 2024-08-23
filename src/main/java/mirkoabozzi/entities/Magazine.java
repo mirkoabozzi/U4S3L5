@@ -12,6 +12,8 @@ public class Magazine extends Catalog {
     @Enumerated(EnumType.STRING)
     private PeriodicityType periodicityType;
 
+    public Magazine() {
+    }
 
     public Magazine(String title, LocalDate publicationDate, int pageNumber, PeriodicityType periodicityType) {
         super(title, publicationDate, pageNumber);
