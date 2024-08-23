@@ -4,8 +4,10 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
 import mirkoabozzi.dao.CatalogDAO;
+import mirkoabozzi.dao.LoanDAO;
 import mirkoabozzi.dao.UserDAO;
 import mirkoabozzi.entities.Book;
+import mirkoabozzi.entities.Loan;
 import mirkoabozzi.entities.Magazine;
 import mirkoabozzi.entities.User;
 import mirkoabozzi.enums.PeriodicityType;
@@ -21,6 +23,7 @@ public class Application {
         EntityManager em = emf.createEntityManager();
         CatalogDAO cd = new CatalogDAO(em);
         UserDAO ud = new UserDAO(em);
+        LoanDAO ld = new LoanDAO(em);
 
         Book book1 = new Book("Il Signore Degli Anelli", LocalDate.of(1982, 2, 1), 530, "Tolkien", "romanzo");
         Book book2 = new Book("Harry Potter e la pietra filosofale", LocalDate.of(1997, 2, 6), 344, "Rowling", "Romanzo");
@@ -34,6 +37,16 @@ public class Application {
         User laura = new User("Laura", "Bianchi", LocalDate.of(1985, 5, 23), 5678);
         User andrea = new User("Andrea", "Rossi", LocalDate.of(1992, 11, 30), 9101);
         User chiara = new User("Chiara", "Verdi", LocalDate.of(1988, 2, 14), 2345);
+
+        User mirkoDB = ud.getUserById("7c751926-beb0-4dc0-9d91-f8ed1d14bdd6");
+        User lauraDB = ud.getUserById("4f4e0085-d228-4d78-a67b-231c86a3ff20");
+        User andreaDB = ud.getUserById("ff26df64-33ad-4f33-9b8f-4bc2e6e127dc");
+        User chiaraDB = ud.getUserById("2c197529-785d-4d6d-ac69-31d9aa4534f3");
+
+        Loan prestito1 = new Loan(mirkoDB, LocalDate.of(2024, 8, 23), LocalDate.of(2024, 8, 23).plusDays(30), LocalDate.of(2024, 10, 1));
+        Loan prestito2 = new Loan(lauraDB, LocalDate.of(2024, 8, 20), LocalDate.of(2024, 8, 20).plusDays(30), LocalDate.of(2024, 9, 25));
+        Loan prestito3 = new Loan(andreaDB, LocalDate.of(2024, 8, 22), LocalDate.of(2024, 8, 22).plusDays(30), LocalDate.of(2024, 9, 30));
+        Loan prestito4 = new Loan(chiaraDB, LocalDate.of(2024, 8, 18), LocalDate.of(2024, 8, 18).plusDays(30), LocalDate.of(2024, 9, 20));
 
 
 //       aggiungi elemento al db
@@ -51,6 +64,13 @@ public class Application {
 //        ud.save(laura);
 //        ud.save(andrea);
 //        ud.save(chiara);
+
+//        aggiungi prestiti al DB
+//        ld.save(prestito1);
+//        ld.save(prestito2);
+//        ld.save(prestito3);
+//        ld.save(prestito4);
+
 
         try {
 
