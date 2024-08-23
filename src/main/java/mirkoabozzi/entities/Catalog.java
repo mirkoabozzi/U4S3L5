@@ -16,7 +16,7 @@ public abstract class Catalog {
     @Column(name = "title")
     private String title;
     @Column(name = "publication_date")
-    private LocalDate publicationDate;
+    private LocalDate publication_date;
     @Column(name = "page_number")
     private int pageNumber;
 
@@ -26,9 +26,9 @@ public abstract class Catalog {
     public Catalog() {
     }
 
-    public Catalog(String title, LocalDate publicationDate, int pageNumber) {
+    public Catalog(String title, LocalDate publication_date, int pageNumber) {
         this.title = title;
-        this.publicationDate = publicationDate;
+        this.publication_date = publication_date;
         this.pageNumber = pageNumber;
     }
 
@@ -46,11 +46,11 @@ public abstract class Catalog {
     }
 
     public LocalDate getPublicationDate() {
-        return publicationDate;
+        return publication_date;
     }
 
     public void setPublicationDate(LocalDate publicationDate) {
-        this.publicationDate = publicationDate;
+        this.publication_date = publicationDate;
     }
 
     public int getPageNumber() {
@@ -66,7 +66,7 @@ public abstract class Catalog {
         return "Catalog{" +
                 "isbn=" + isbn +
                 ", title='" + title + '\'' +
-                ", publicationDate=" + publicationDate +
+                ", publication_date=" + publication_date +
                 ", pageNumber=" + pageNumber +
                 '}';
     }

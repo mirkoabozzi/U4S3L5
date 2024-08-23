@@ -7,6 +7,7 @@ import mirkoabozzi.dao.CatalogDAO;
 import mirkoabozzi.entities.Book;
 import mirkoabozzi.entities.Magazine;
 import mirkoabozzi.enums.PeriodicityType;
+import mirkoabozzi.exceptions.NotFoundException;
 
 import java.time.LocalDate;
 
@@ -37,12 +38,25 @@ public class Application {
 //        cd.save(magazine3);
 //        cd.save(magazine4);
 
+        try {
+
 //      cerca elemento per isbn
-        System.out.println("Elemento tramite ISBN " + cd.getByASIN("87ee5874-05c7-4bcb-9f1f-a41d4fd7778a"));//
+            System.out.println("Elemento tramite ISBN " + cd.getByASIN("87ee5874-05c7-4bcb-9f1f-a41d4fd7778a"));
 
 //        Elimina elemento per isbn
-//        cd.deleteByISBN("da9da08d-f47e-4049-a827-174baf1dbc2a");
+//            cd.deleteByISBN("da9da08d-f47e-4049-a827-174baf1dbc2");
+
+        } catch (NotFoundException ex) {
+            System.out.println(ex.getMessage());
+        }
 
 
+//     trova elemento per data pubblicazione
+        System.out.println("Trova tramite data pubblicazione");
+        cd.findByPublishYear("1982-02-01").forEach(System.out::println);
+
+
+        em.close();
+        emf.close();
     }
 }

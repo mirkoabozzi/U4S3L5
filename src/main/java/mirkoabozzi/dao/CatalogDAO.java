@@ -2,9 +2,12 @@ package mirkoabozzi.dao;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
+import jakarta.persistence.TypedQuery;
 import mirkoabozzi.entities.Catalog;
 import mirkoabozzi.exceptions.NotFoundException;
 
+import java.time.LocalDate;
+import java.util.List;
 import java.util.UUID;
 
 public class CatalogDAO {
@@ -37,4 +40,13 @@ public class CatalogDAO {
         transaction.commit();
         System.out.println("Elemento " + elementFound.getTitle() + " eliminato");
     }
+
+    public List<Catalog> findByPublishYear(String publishDate) {
+        LocalDate date = LocalDate.parse(publishDate);
+        TypedQuery<Catalog> query = em.createQuery("SELECT c FROM Catalog c WHERE c.publication_date =:date", Catalog.class);
+        query.setParameter("date", date);
+        return query.getResultList();
+
+    }
+
 }
