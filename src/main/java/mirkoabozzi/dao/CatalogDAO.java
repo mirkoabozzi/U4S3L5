@@ -29,4 +29,12 @@ public class CatalogDAO {
         else return elementFound;
     }
 
+    public void deleteByISBN(String catalogISBN) {
+        Catalog elementFound = this.getByASIN(catalogISBN);
+        EntityTransaction transaction = em.getTransaction();
+        transaction.begin();
+        em.remove(elementFound);
+        transaction.commit();
+        System.out.println("Elemento " + elementFound.getTitle() + " eliminato");
+    }
 }
