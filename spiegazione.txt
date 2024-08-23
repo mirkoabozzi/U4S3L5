@@ -1,0 +1,5 @@
+un catalogo ha tanti book ma ogni book ha un solo catalogo
+un catalogo ha tanti magazine ma ogni magazine ha un solo catalogo
+il catalogo può prestare tanti elementi ma il prestito può contenere un solo elemento book/magazine
+un user puo richedere tanti prestiti
+un prestito viene associato a un solo user

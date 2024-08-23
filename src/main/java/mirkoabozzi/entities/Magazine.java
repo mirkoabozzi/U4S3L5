@@ -8,7 +8,7 @@ import java.time.LocalDate;
 @Entity
 @Table(name = "magazine")
 public class Magazine extends Catalog {
-    @Column(name = "periodicity")
+    @Column(name = "periodicity", nullable = false)
     @Enumerated(EnumType.STRING)
     private PeriodicityType periodicityType;
 

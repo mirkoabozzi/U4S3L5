@@ -48,7 +48,7 @@ public class Application {
         Loan prestito1 = new Loan(mirkoDB, elDB1, LocalDate.of(2024, 8, 23), LocalDate.of(2024, 8, 23).plusDays(30), LocalDate.of(2024, 10, 1));
         Loan prestito2 = new Loan(lauraDB, elDB2, LocalDate.of(2024, 8, 20), LocalDate.of(2024, 8, 20).plusDays(30), LocalDate.of(2024, 9, 25));
         Loan prestito3 = new Loan(andreaDB, elDB3, LocalDate.of(2024, 8, 22), LocalDate.of(2024, 8, 22).plusDays(30), LocalDate.of(2024, 9, 30));
-        Loan prestito4 = new Loan(chiaraDB, elDB4, LocalDate.of(2024, 8, 18), LocalDate.of(2024, 8, 18).plusDays(30), LocalDate.of(2024, 9, 20));
+        Loan prestito4 = new Loan(chiaraDB, elDB4, LocalDate.of(2024, 8, 18), LocalDate.of(2024, 8, 18).plusDays(30), null);
 
 
 //       aggiungi elemento al db
@@ -104,6 +104,9 @@ public class Application {
         System.out.println("Elementi in prestito tramite card id");
         ld.getLoanByUserCard(1234).forEach(System.out::println);
 
+//        Prestiti scaduti non ancora restituiti
+        System.out.println("Prestiti scaduti non ancora restituiti");
+        ld.getExpiredLoanNotReturned().forEach(System.out::println);
         em.close();
         emf.close();
     }

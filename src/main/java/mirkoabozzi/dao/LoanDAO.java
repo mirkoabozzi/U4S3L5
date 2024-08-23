@@ -27,4 +27,9 @@ public class LoanDAO {
         query.setParameter("cardId", cardId);
         return query.getResultList();
     }
+
+    public List<Loan> getExpiredLoanNotReturned() {
+        TypedQuery<Loan> query = em.createQuery("SELECT l FROM Loan l WHERE l.loanEndData < CURRENT_DATE AND l.effectiveEndLoan IS NULL", Loan.class);
+        return query.getResultList();
+    }
 }

@@ -12,13 +12,13 @@ public class User {
     @Id
     @GeneratedValue
     private UUID id;
-    @Column(name = "name")
+    @Column(name = "name", nullable = false)
     private String name;
-    @Column(name = "surname")
+    @Column(name = "surname", nullable = false)
     private String username;
-    @Column(name = "local_date")
+    @Column(name = "local_date", nullable = false)
     private LocalDate birthDate;
-    @Column(name = "card_id")
+    @Column(name = "card_id", nullable = false)
     private int cardId;
 
     @OneToMany(mappedBy = "user")

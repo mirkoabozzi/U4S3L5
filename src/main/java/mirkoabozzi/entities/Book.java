@@ -9,9 +9,9 @@ import java.time.LocalDate;
 @Entity
 @Table(name = "book")
 public class Book extends Catalog {
-    @Column(name = "author")
+    @Column(name = "author", nullable = false)
     private String author;
-    @Column(name = "genere")
+    @Column(name = "genere", nullable = false)
     private String genere;
 
     public Book() {

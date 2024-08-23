@@ -14,17 +14,17 @@ public class Loan {
 
 
     @ManyToOne()
-    @JoinColumn(name = "userId")
+    @JoinColumn(name = "userId", nullable = false)
     private User user;
 
     @ManyToOne()
-    @JoinColumn(name = "element_loan_id")
+    @JoinColumn(name = "element_loan_id", nullable = false)
     private Catalog catalog;
 
 
-    @Column(name = "loan_start_data")
+    @Column(name = "loan_start_data", nullable = false)
     private LocalDate loanStartData;
-    @Column(name = "loan_end_data")
+    @Column(name = "loan_end_data", nullable = false)
     private LocalDate loanEndData;
     @Column(name = "effective_end_loan")
     private LocalDate effectiveEndLoan;
