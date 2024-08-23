@@ -33,8 +33,9 @@ public class Loan {
     public Loan() {
     }
 
-    public Loan(User user, LocalDate loanStartData, LocalDate loanEndData, LocalDate effectiveEndLoan) {
+    public Loan(User user, Catalog catalog, LocalDate loanStartData, LocalDate loanEndData, LocalDate effectiveEndLoan) {
         this.user = user;
+        this.catalog = catalog;
         this.loanStartData = loanStartData;
         this.loanEndData = loanEndData;
         this.effectiveEndLoan = effectiveEndLoan;
