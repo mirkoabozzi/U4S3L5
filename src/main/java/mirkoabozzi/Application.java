@@ -59,6 +59,10 @@ public class Application {
         System.out.println("Trova per autore");
         cd.findByAuthor("rowling").forEach(System.out::println);
 
+//        Filtra per titolo o parte del titolo
+
+        System.out.println("Filtra titolo o parte del titolo");
+        cd.filterTitle("la").forEach(System.out::println);
 
         em.close();
         emf.close();

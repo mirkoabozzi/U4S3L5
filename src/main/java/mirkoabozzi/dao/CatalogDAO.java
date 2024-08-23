@@ -54,4 +54,11 @@ public class CatalogDAO {
         query.setParameter("author", author);
         return query.getResultList();
     }
+
+    public List<Catalog> filterTitle(String title) {
+        TypedQuery<Catalog> query = em.createQuery("SELECT c FROM Catalog c WHERE LOWER (c.title) LIKE LOWER(:title)", Catalog.class);
+        query.setParameter("title", "%" + title + "%");
+        return query.getResultList();
+    }
+
 }
