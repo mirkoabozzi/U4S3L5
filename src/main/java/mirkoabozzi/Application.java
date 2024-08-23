@@ -4,8 +4,10 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
 import mirkoabozzi.dao.CatalogDAO;
+import mirkoabozzi.dao.UserDAO;
 import mirkoabozzi.entities.Book;
 import mirkoabozzi.entities.Magazine;
+import mirkoabozzi.entities.User;
 import mirkoabozzi.enums.PeriodicityType;
 import mirkoabozzi.exceptions.NotFoundException;
 
@@ -18,6 +20,7 @@ public class Application {
 
         EntityManager em = emf.createEntityManager();
         CatalogDAO cd = new CatalogDAO(em);
+        UserDAO ud = new UserDAO(em);
 
         Book book1 = new Book("Il Signore Degli Anelli", LocalDate.of(1982, 2, 1), 530, "Tolkien", "romanzo");
         Book book2 = new Book("Harry Potter e la pietra filosofale", LocalDate.of(1997, 2, 6), 344, "Rowling", "Romanzo");
@@ -27,6 +30,11 @@ public class Application {
         Magazine magazine2 = new Magazine("Unione Sarda", LocalDate.of(1889, 10, 11), 15, PeriodicityType.MONTHLY);
         Magazine magazine3 = new Magazine("La Gazzetta Dello Sport", LocalDate.of(1896, 10, 29), 10, PeriodicityType.HALF_YEARLY);
         Magazine magazine4 = new Magazine("Tutto Sport", LocalDate.of(1946, 10, 15), 20, PeriodicityType.MONTHLY);
+        User mirko = new User("Mirko", "Abozzi", LocalDate.of(1990, 9, 12), 1234);
+        User laura = new User("Laura", "Bianchi", LocalDate.of(1985, 5, 23), 5678);
+        User andrea = new User("Andrea", "Rossi", LocalDate.of(1992, 11, 30), 9101);
+        User chiara = new User("Chiara", "Verdi", LocalDate.of(1988, 2, 14), 2345);
+
 
 //       aggiungi elemento al db
 //        cd.save(book1);
@@ -37,6 +45,12 @@ public class Application {
 //        cd.save(magazine2);
 //        cd.save(magazine3);
 //        cd.save(magazine4);
+
+//        aggiungi utenti al DB
+//        ud.save(mirko);
+//        ud.save(laura);
+//        ud.save(andrea);
+//        ud.save(chiara);
 
         try {
 
