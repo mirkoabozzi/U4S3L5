@@ -55,6 +55,10 @@ public class Application {
         System.out.println("Trova tramite data pubblicazione");
         cd.findByPublishYear("1982-02-01").forEach(System.out::println);
 
+//        trova per autore
+        System.out.println("Trova per autore");
+        cd.findByAuthor("rowling").forEach(System.out::println);
+
 
         em.close();
         emf.close();

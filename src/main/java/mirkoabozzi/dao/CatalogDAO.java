@@ -49,4 +49,9 @@ public class CatalogDAO {
 
     }
 
+    public List<Catalog> findByAuthor(String author) {
+        TypedQuery<Catalog> query = em.createQuery("SELECT c FROM Catalog c WHERE LOWER (c.author) = LOWER (:author)", Catalog.class);
+        query.setParameter("author", author);
+        return query.getResultList();
+    }
 }
